@@ -1,42 +1,36 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      title: 'Using Material Components',
-      home: ExHome(),
-    ),
-  );
-}
-
-class ExHome extends StatelessWidget {
-  const ExHome({super.key});
+class MyButton extends StatelessWidget {
+  const MyButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          leading: const IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: "Navigation menu",
-            onPressed: null,
+    return GestureDetector(
+        onTap: () {
+          print("MyButton tapped!");
+        },
+        child: Container(
+          height: 50.0,
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5.0),
+            color: Colors.lightGreen,
           ),
-          title: const Text("Scaffold Title"),
-          actions: const [
-            IconButton(
-              icon: Icon(Icons.search),
-              tooltip: "Search",
-              onPressed: null,
-            ),
-          ]),
-      body: const Center(
-        child: Text("Body"),
-      ),
-      floatingActionButton: const FloatingActionButton(
-        tooltip: "Add",
-        onPressed: null,
-        child: Icon(Icons.add),
-      ),
-    );
+          child: const Center(
+            child: Text("Engage"),
+          ),
+        ));
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    title: "Detecting gesture",
+    home: Scaffold(
+      body: Center(
+        child: MyButton(),
+      ),
+    ),
+  ));
 }
